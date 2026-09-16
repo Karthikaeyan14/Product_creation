@@ -10,6 +10,7 @@ def pytest_addoption(parser):
         "--broswer_name", action="store", default='chrome', help="broswer selection"
     )
 
+#main 
 @pytest.fixture(scope='function')
 
 def broswerInstance(request):
