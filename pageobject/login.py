@@ -11,6 +11,7 @@ class Login:
         self.email=(By.ID,'login')
         self.password=(By.ID,"password")
         self.login_button=(By.XPATH,"//button[text()='Log in']")
+        self.error_message=(By.XPATH,"//div[@class='alert alert-danger']")
     
     def signup(self):
         self.wait.until(EC.element_to_be_clickable(
@@ -32,5 +33,9 @@ class Login:
      password_field.send_keys(password)
 
      self.wait.until(
-        EC.element_to_be_clickable(self.login_button)
-    ).click()
+        EC.element_to_be_clickable(self.login_button)).click()
+     
+     def warning_message(self):
+        return self.wait.until(
+            EC.visibility_of_element_located(self.error_message)
+        ).text

@@ -30,4 +30,10 @@ def broswerInstance(request):
     driver.quit()
     
 
+#when we install pytest.ini for markers we need to add this function in conftest.py file
+def pytest_configure(config):
+    config.addinivalue_line(
+        "markers", "env(name): mark test to run only on named environment"
+    )
+
 
